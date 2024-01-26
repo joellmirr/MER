@@ -1,0 +1,52 @@
+
+//tabelas modelo
+Table clientes {
+  id varchar [primary key]
+  nome varchar
+  cpf varchar
+  emil varchar
+  endereco varchar
+  telefone varcharv
+}
+
+Table vendedor {
+  id varchar [primary key]
+  nome varchar
+  cpf varchar
+  endereco varchar
+  telefone varchar
+  salario float
+  comissao float
+}
+
+Table pecas {
+  id varchar [primary key]
+  descricao varchar
+  preco float
+  qdt_estoque integer
+  armazem varchar
+
+}
+
+Table armazem{  
+  id varchar [primary key]
+  endereco varchar
+  gerente_responsavel varchar
+  telefone varchar
+}
+
+// tabbela fato
+Table pedido{
+  id varchar [primary key]
+  cod_peca  varchar
+  qdt_peca_adquiridas varchar
+  meio_pagamento varchar
+  valor float
+  data_pedido timestape
+  cliente varchar
+  vendedor varchar
+}
+Ref: pecas.armazem > armazem.id
+Ref: pecas.id <> pedido.id
+Ref: vendedor.id < pedido.vendedor
+Ref: clientes.id < pedido.cliente

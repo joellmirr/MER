@@ -1,0 +1,59 @@
+//tabela curso modelo primaria
+//nao tem realcionamento direto com outra tabela
+table curso{
+  idcurso varchar [primary key, unique, not null] 
+  descricaocursos varchar [not null]
+  cargahorariacursos integer [unique, not null]
+  modalidade varchar [not null]
+  eixotecnologico varchar [not null]
+}
+
+//tabela modelo unidade secundaria
+//por realcionar com outra tabela modelo primaria (tabela cursos)
+table unidade{
+  idunidade varchar [primary key, unique, not null] 
+  descricaounidade varchar [not null]
+  cargahorariaunidade integer [not null]
+  ordem varchar [not null]
+  professor varchar [unique, not null]
+  curso varchar [not null]
+}
+
+//tabela primaria, por relacionar tabela fato
+table turma{
+  idturma varchar [primary key, unique, not null] 
+  datainicio date [not null]
+  datafim date [not null]
+  horasaulas integer [not null]
+  turno varchar [not null]
+  curso varchar [not null]
+}
+
+//tabela fato(pois fato acontece com data e local)
+table aula{
+  idaula varchar [primary key, unique, not null] 
+  dataaula date [not null]
+  status varchar  [not null]
+  localaula varchar [not null]
+  docente varchar [not null]
+  turma varchar [not null]
+  unidade varchar [not null]
+}
+
+//tabela fato(pois fato acontece com data e local)
+table recessos{
+  idrecesso varchar [primary key, unique, not null] 
+  datarecesso date [not null]
+  descricaorecesso varchar [not null]
+}
+
+
+Ref: curso.idcurso > unidade.curso
+
+Ref: curso.idcurso > turma.curso
+
+Ref: turma.idturma > aula.turma
+
+Ref: unidade.idunidade > aula.unidade
+
+Ref: recessos.idrecesso > aula.idaula

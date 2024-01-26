@@ -1,0 +1,39 @@
+Table empregado {
+  id varchar [primary key]
+  nome varchar
+  cpf varchar
+  estadoCivil varchar
+  dataNascimento varchar
+  cargo varchar
+  expediente varchar
+}
+
+Table cargo {
+  id varchar [primary key]
+  cargaHoraria  varchar
+  salario integer
+  experiencia varchar
+  departamento integer
+  empregado varchar
+
+}
+
+Table departamento{
+  id varchar [primary key]
+  sigla varchar
+  descricao varchar
+  cargo varchar
+}
+
+Table expediente {
+  id varchar [primary key]
+  diaSemana date
+  entrada time
+  entradaAlmoco time
+  saidaAlmoco time
+  saida time
+}
+
+Ref:cargo.id > empregado.id //1:N
+Ref:cargo.id < departamento.id //1:N
+Ref: expediente.id > empregado.id //N:1
