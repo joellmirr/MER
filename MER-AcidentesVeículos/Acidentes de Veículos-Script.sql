@@ -1,3 +1,9 @@
+CREATE TABLE Login (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    usuario VARCHAR(50) NOT NULL,
+    senha VARCHAR(10) NOT NULL
+);
+
 CREATE TABLE AcidenteVeiculo (
 	idacidente INTEGER PRIMARY key 	AUTO_INCREMENT,
     descricaoacidente VARCHAR(100) NOT NULL,
