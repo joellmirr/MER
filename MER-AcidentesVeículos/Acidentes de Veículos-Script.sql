@@ -5,20 +5,19 @@ CREATE TABLE Login (
 );
 
 CREATE TABLE AcidenteVeiculo (
-	idacidente INTEGER PRIMARY key 	AUTO_INCREMENT,
+    idacidente INTEGER PRIMARY key AUTO_INCREMENT,
     descricaoacidente VARCHAR(100) NOT NULL,
     dataacidente DATE NOT NULL,
     horaacidente TIMESTAMP NOT NULL,
-    localizacao INTEGER NOT NULL, 
-    naturezaacidente VARCHAR(100) NOT NULL,
-    condicoesclimaticas VARCHAR(100) NOT NULL,
+    danos VARCHAR(100) NOT NULL,
+    localizacao INTEGER NOT NULL,
     veiculo INTEGER NOT NULL,
-    vitima INTEGER NOT NULL,
-    danos VARCHAR(100) NOT NULL
+    vitima INTEGER NOT NULL
+    
 );
 
 CREATE TABLE Veiculo (
-	idveiculo INTEGER PRIMARY key AUTO_INCREMENT,
+    idveiculo INTEGER PRIMARY key AUTO_INCREMENT,
     fabricante VARCHAR(100) NOT NULL,
     modelo VARCHAR(100) NOT NULL,
     anofabricacao INTEGER NOT NULL, 
@@ -49,12 +48,6 @@ CREATE TABLE Motorista (
     cnh INTEGER NOT NULL,
     descricaomotorista VARCHAR(100) NOT NULL,
     telefone VARCHAR(9) NOT NULL
-);
-
-CREATE TABLE VitimaAcidente (
-    idvitimaacidente INTEGER PRIMARY key AUTO_INCREMENT,
-    pessoa INTEGER NOT NULL,
-    acidente INTEGER NOT NULL
 );
 
 ALTER TABLE AcidenteVeiculo ADD CONSTRAINT FK_AcidenteVeiculo_Localizacao
